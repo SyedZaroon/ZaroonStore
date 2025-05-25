@@ -3595,3 +3595,11 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in {
+    animation: var(--animation-slide-in);
+    animation-delay: calc(var(--animation-order) * 75ms);
+    color: green;
+  }
+}
