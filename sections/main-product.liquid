@@ -105,6 +105,49 @@
                     </h2>
                   </a>
                 </div>
+
+                
+    {% when 'counter_block' %}
+      <div id="product-counter-section">
+        <div class="counter-container">
+          <p>Counter: <span id="counter-value">0</span></p>
+          <button id="increment-btn">+</button>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const btn = document.getElementById('increment-btn');
+          const counter = document.getElementById('counter-value');
+
+          btn?.addEventListener('click', () => {
+            let current = parseInt(counter.textContent) || 0;
+            let newValue = current + 1;
+
+            // Set new value before refresh (optional for UX)
+            counter.textContent = newValue;
+
+            // Use Section Rendering API to re-render section
+            fetch(window.location.pathname + '?section_id=main-product')  // change if your section filename is different
+              .then(res => res.text())
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newSection = doc.getElementById('product-counter-section');
+                if (newSection) {
+                  document.getElementById('product-counter-section').innerHTML = newSection.innerHTML;
+                }
+              });
+          });
+        });
+      </script>
+
+
+
+
+
+  
+
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -718,6 +761,10 @@
       endif
     -%}
 
+
+  
+
+
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
@@ -732,6 +779,11 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "counter_block",
+      "name": "Counter Block",
+      "settings": []
     },
     {
       "type": "text",
