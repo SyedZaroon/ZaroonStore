@@ -2250,6 +2250,9 @@ input[type='checkbox'] {
   margin: 0;
   letter-spacing: 0.1rem;
   min-height: 3.8rem;
+  display: flex;
+  align-items: center;
+  gap:30px
 }
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
