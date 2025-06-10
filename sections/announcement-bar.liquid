@@ -66,7 +66,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
+              {{- 'arrow-left-solid.svg' | inline_asset_content -}}
             </span>
           </button>
           <div
@@ -103,7 +103,7 @@
                       <img src="{{ block.settings.image | image_url }}" width="20" height="20" alt="Icon" />
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                       {{- 'arrow-left-solid.svg' | inline_asset_content -}}
                       {%- endif -%}
                       
                     </p>
@@ -124,7 +124,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
+               {{- 'arrow-right-solid.svg' | inline_asset_content -}}
             </span>
           </button>
         </div>
