@@ -1,14 +1,31 @@
+
+  <!-- 1️⃣ Include Slick CSS from CDN -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+/> 
+
 <style>
+
+
 
 .slide-content a {
     text-decoration: none;
     color: black;
 }
-
+.slick-initialized .slick-slide{
+  display:flex;
+}
 .slider-main {
-    width: 90%;
+    width: 95%;
     margin: 20px auto;
-    height: 90vh;
+    {% comment %} height: 50%; {% endcomment %}
     position: relative;
     /* Full viewport height */
 
@@ -16,7 +33,7 @@
 
 .slide {
     width: 100%;
-    height: 90vh;
+    height: 80vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +43,7 @@
 
     display: flex;
     flex-direction: column;
-    align-content: flex-end;
+    justify-content: flex-end;
     position: relative;
     z-index: 0;
 }
@@ -48,21 +65,6 @@
     cursor: grab
 }
 
-.slide1 {
-    background-image: url("/home-slider-02.webp");
-    background-color: #f5f5f5;
-    /* Fallback color */
-}
-
-.slide2 {
-    background-image: url("/image.png");
-    background-color: #e0e0e0;
-}
-
-.slide3 {
-    background-image: url("/home-slider-02.webp");
-    background-color: #d0d0d0;
-}
 
 .slide-content {
     display: flex;
@@ -79,9 +81,7 @@
     width: clamp(400px, 600px, 600px);
     font-size: clamp(1rem, 3.368vw, 4rem);
     cursor: default;
-
 }
-
 
 .slide-content-btn {
     cursor: pointer;
@@ -139,8 +139,8 @@
     transform: translateX(-50%);
     bottom: 30px;
     display: flex;
-    gap: 10px;
     list-style: none;
+    justify-content:center
 }
 
 
@@ -153,6 +153,9 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 0;
+}
+.slick-dots li{
+  margin:0;
 }
 
 .slick-dots li button:before {
@@ -180,28 +183,24 @@
 /* Slick Arrows */
 .slick-prev,
 .slick-next {
-    font-size: 0;
-    background: none;
-    border: none;
-    position: absolute;
-    bottom: 2%;
-    transform: translateY(-50%);
     z-index: 10;
-    cursor: pointer;
 }
 
 .slick-prev {
-    left: 60px;
+    left: 70px;
 }
 
 .slick-next {
-    right: 60px;
+    right: 70px;
 }
 
 .slick-prev::before,
 .slick-next::before {
     font-size: 24px;
     color: white;
+    position:absolute;
+       font-family: inherit;
+       transform:translate(0px, 240px)
 }
 
 .slick-prev::before {
@@ -231,7 +230,7 @@
 
 <div class="slider-main">
   {% for block in section.blocks %}
-    <div class="slide" style="background-image: url({{ block.settings.background_image | image_url: 'master' }});">
+    <div class="slide" style="background-image: url('{{ block.settings.background_image | image_url}}');">
       <div class="slide-content">
         <h1 class="slide-content-heading">{{ block.settings.heading }}</h1>
         {% if block.settings.button_link %}
@@ -317,3 +316,47 @@
   ]
 }
 {% endschema %}
+
+<!-- 2️⃣ Include jQuery & Slick JS from CDN and initialize -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+></script>
+<script>
+  $(document).ready(function () {
+  $(".slider-main").slick({
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1, // Showing multiple slides
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    arrows: true,
+    adaptiveHeight: false,
+    centerMode: false, // Must be false for gaps
+    variableWidth: false, // Must be false for gaps
+
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: false,
+          slidesToShow: 1, // Adjust for smaller screens
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false,
+          slidesToShow: 1, // Single slide on mobile
+        },
+      },
+    ],
+  });
+});
+
+
+  </script>

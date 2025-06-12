@@ -2315,6 +2315,7 @@ input[type='checkbox'] {
 /* section-header */
 .section-header.shopify-section-group-header-group {
   z-index: 3;
+  background-color: #1a1a1a;
 }
 
 .shopify-section-header-sticky {
@@ -2347,10 +2348,6 @@ input[type='checkbox'] {
   display: block;
   position: relative;
   background-color: rgb(var(--color-background));
-}
-
-.header-wrapper--border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
 .header {
@@ -2388,7 +2385,7 @@ input[type='checkbox'] {
 
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
     column-gap: 2rem;
   }
 
