@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "15.4.0",
-    "theme_author": "Shopify",
+    "theme_name": "Adaptogese",
+    "theme_version": "1.0.0",
+    "theme_author": "Zaroon",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
@@ -56,13 +56,13 @@
             "type": "color",
             "id": "text",
             "label": "t:settings_schema.colors.settings.text.label",
-            "default": "#121212"
+            "default": "#242424"
           },
           {
             "type": "color",
             "id": "button",
             "label": "t:settings_schema.colors.settings.button_background.label",
-            "default": "#121212"
+            "default": "#FB740F"
           },
           {
             "type": "color",
@@ -74,13 +74,13 @@
             "type": "color",
             "id": "secondary_button_label",
             "label": "t:settings_schema.colors.settings.secondary_button_label.label",
-            "default": "#121212"
+            "default": "#FB740F"
           },
           {
             "type": "color",
             "id": "shadow",
             "label": "t:settings_schema.colors.settings.shadow.label",
-            "default": "#121212"
+            "default": "#242424"
           }
         ],
         "role": {
@@ -108,12 +108,12 @@
         "type": "header",
         "content": "t:settings_schema.typography.settings.header__1.content"
       },
-      {
-        "type": "font_picker",
-        "id": "type_header_font",
-        "default": "assistant_n4",
-        "label": "t:settings_schema.typography.settings.type_header_font.label"
-      },
+      // {
+      //   "type": "font_picker",
+      //   "id": "type_header_font",
+      //   "default": "inter_n4",
+      //   "label": "t:settings_schema.typography.settings.type_header_font.label"
+      // },
       {
         "type": "range",
         "id": "heading_scale",
@@ -131,7 +131,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "inter_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
       },
       {
