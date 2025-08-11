@@ -40,7 +40,7 @@
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
-  <script>(function () { if ((!document.documentElement.innerHTML.match(/asyncLoad/) || (document.documentElement.innerHTML.includes && (document.documentElement.innerHTML.includes('\\/obscure' + '-escarpment-2240') || document.documentElement.innerHTML.includes('/assets/' + 'best_custom_product_options.js')))) && (!window.bcpo || !bcpo.disabled) && window.bcpo_data && bcpo_data.virtual_options && bcpo_data.virtual_options.length) { return; } var script = document.createElement('script'); script.defer = true; script.src = "{{ 'product-form.js' | asset_url }}"; document.head.appendChild(script); })();</script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -105,49 +105,6 @@
                     </h2>
                   </a>
                 </div>
-
-                
-    {% when 'counter_block' %}
-      <div id="product-counter-section">
-        <div class="counter-container">
-          <p>Counter: <span id="counter-value">0</span></p>
-          <button id="increment-btn">+</button>
-        </div>
-      </div>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const btn = document.getElementById('increment-btn');
-          const counter = document.getElementById('counter-value');
-
-          btn?.addEventListener('click', () => {
-            let current = parseInt(counter.textContent) || 0;
-            let newValue = current + 1;
-
-            // Set new value before refresh (optional for UX)
-            counter.textContent = newValue;
-
-            // Use Section Rendering API to re-render section
-            fetch(window.location.pathname + '?section_id=main-product')  // change if your section filename is different
-              .then(res => res.text())
-              .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const newSection = doc.getElementById('product-counter-section');
-                if (newSection) {
-                  document.getElementById('product-counter-section').innerHTML = newSection.innerHTML;
-                }
-              });
-          });
-        });
-      </script>
-
-
-
-
-
-  
-
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -282,9 +239,20 @@
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
                   {% # theme-check-enable %}
-                  <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
-                    {{ 'products.product.quantity.label' | t }}
-                    <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}">
+                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">
+                    {%- if cart_qty > 0 -%}
+                      {{- 'products.product.quantity.in_cart_aria_label' | t: quantity: cart_qty -}}
+                    {%- else -%}
+                      {{- 'products.product.quantity.label' | t -}}
+                    {%- endif -%}
+                  </span>
+                  <label
+                    class="quantity__label form__label"
+                    for="Quantity-{{ section.id }}"
+                    aria-labelledby="quantity-label-{{ section.id }}"
+                  >
+                    <span aria-hidden="true">{{ 'products.product.quantity.label' | t }}</span>
+                    <span class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}" aria-hidden="true">
                       {%- render 'loading-spinner' -%}
                       <span
                         >(
@@ -399,7 +367,10 @@
                                 </dt>
                                 <dd>
                                   <span class="price-per-item--current">
-                                    {{- 'products.product.volume_pricing.price_at_each_html' | t: price: variant_price -}}
+                                    {{-
+                                      'products.product.volume_pricing.price_at_each_html'
+                                      | t: price: variant_price
+                                    -}}
                                   </span>
                                 </dd>
                               </dl>
@@ -761,10 +732,6 @@
       endif
     -%}
 
-
-  
-
-
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
@@ -779,11 +746,6 @@
   "blocks": [
     {
       "type": "@app"
-    },
-    {
-      "type": "counter_block",
-      "name": "Counter Block",
-      "settings": []
     },
     {
       "type": "text",
@@ -1726,7 +1688,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_2.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_2",
@@ -1926,7 +1888,7 @@
         {
           "type": "header",
           "content": "t:sections.main-product.blocks.icon_with_text.settings.pairing_3.label"
-        },        
+        },
         {
           "type": "select",
           "id": "icon_3",
@@ -2228,7 +2190,7 @@
       ],
       "default": "hide",
       "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-    },    
+    },
     {
       "type": "select",
       "id": "media_position",
@@ -2304,5 +2266,3 @@
   ]
 }
 {% endschema %}
-
-<!-- bcpo done -->

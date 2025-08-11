@@ -118,8 +118,19 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
-                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
-                        <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+                      <tr
+                        id="CartDrawer-Item-{{ item.index | plus: 1 }}"
+                        class="cart-item{% if item.parent_relationship.parent != null %} cart-item__nested-line{% endif %}"
+                        role="row"
+                        {% if item.parent_relationship.parent != null %}
+                          aria-label="{{- 'products.product.nested_label' | t: title: item.product.title, parent_title: item.parent_relationship.parent.title | escape -}}"
+                        {% endif %}
+                      >
+                        <td
+                          class="cart-item__media"
+                          role="cell"
+                          headers="CartDrawer-ColumnProductImage"
+                        >
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                             <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
@@ -149,18 +160,18 @@
                                 {{ 'products.product.price.regular_price' | t }}
                               </span>
                               <s class="cart-item__old-price product-option">
-                                <span class="bcpo-cart-item-price" data-key="{{item.key}}"><span class="bcpo-cart-item-original-price" data-key="{{item.key}}">{{ item.original_price | money }}</span></span>
+                                {{- item.original_price | money -}}
                               </s>
                               <span class="visually-hidden">
                                 {{ 'products.product.price.sale_price' | t }}
                               </span>
                               <strong class="cart-item__final-price product-option">
-                                <span class="bcpo-cart-item-price" data-key="{{item.key}}">{{ item.final_price | money }}</span>
+                                {{ item.final_price | money }}
                               </strong>
                             </div>
                           {%- else -%}
                             <div class="product-option">
-                              <span class="bcpo-cart-item-price" data-key="{{item.key}}"><span class="bcpo-cart-item-original-price" data-key="{{item.key}}">{{ item.original_price | money }}</span></span>
+                              {{ item.original_price | money }}
                             </div>
                           {%- endif -%}
 
@@ -194,29 +205,10 @@
                                           target="_blank"
                                           aria-describedby="a11y-new-window-message"
                                         >
-                                          
-{% assign file_type = property.last | split: '.' | last | downcase %}
-{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
-{% if file_types contains file_type %}
-  <div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
-{% else %}
-  <span class="bcpo-cart-file">Uploaded file</span>
-{% endif %}
-
+                                          {{ property.last | split: '/' | last }}
                                         </a>
                                       {%- else -%}
-                                        
-{% if property.last contains '/uploads/' %}
-	{% assign file_type = property.last | split: '.' | last | downcase %}
-	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
-	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
-	{% else %}
-		<span class="bcpo-cart-file">Uploaded file</span>
-	{% endif %}
-{% else %}
-	{{ property.last }}
-{% endif %}
+                                        {{ property.last }}
                                       {%- endif -%}
                                     </dd>
                                   </div>
@@ -250,34 +242,23 @@
                                   {{ 'products.product.price.regular_price' | t }}
                                 </span>
                                 <s class="cart-item__old-price price price--end">
-                                  <span class="bcpo-cart-item-line-price" data-key="{{item.key}}"><span class="bcpo-cart-item-original-price" data-key="{{item.key}}">{{ item.original_price | money }}</span></span>
+                                  {{ item.original_line_price | money }}
                                 </s>
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.sale_price' | t }}
                                 </span>
                                 <span class="price price--end">
-                                  <span class="bcpo-cart-item-line-price" data-key="{{item.key}}">{{ item.final_price | money }}</span>
+                                  {{ item.final_line_price | money }}
                                 </span>
                               </div>
                             {%- else -%}
                               <span class="price price--end">
-                                <span class="bcpo-cart-item-line-price" data-key="{{item.key}}"><span class="bcpo-cart-item-original-price" data-key="{{item.key}}">{{ item.original_price | money }}</span></span>
+                                {{ item.original_line_price | money }}
                               </span>
                             {%- endif -%}
 
                             {%- if item.variant.available and item.unit_price_measurement -%}
-                              <div class="unit-price caption">
-                                <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                                {{ item.unit_price | money }}
-                                <span aria-hidden="true">/</span>
-                                <span class="visually-hidden"
-                                  >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
-                                >
-                                {%- if item.unit_price_measurement.reference_value != 1 -%}
-                                  {{- item.unit_price_measurement.reference_value -}}
-                                {%- endif -%}
-                                {{ item.unit_price_measurement.reference_unit }}
-                              </div>
+                              {% render 'unit-price', price: item.unit_price, measurement: item.unit_price_measurement %}
                             {%- endif -%}
                           </div>
                         </td>
@@ -301,7 +282,14 @@
                             <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                               <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
                                 <quantity-input class="quantity cart-quantity">
-                                  <button class="quantity__button" name="minus" type="button">
+                                  <button
+                                    class="quantity__button"
+                                    name="minus"
+                                    type="button"
+                                    {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
                                     <span class="visually-hidden">
                                       {{-
                                         'products.product.quantity.decrease'
@@ -331,8 +319,18 @@
                                     aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                                     id="Drawer-quantity-{{ item.index | plus: 1 }}"
                                     data-index="{{ item.index | plus: 1 }}"
+                                    {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                      disabled
+                                    {% endif %}
                                   >
-                                  <button class="quantity__button" name="plus" type="button">
+                                  <button
+                                    class="quantity__button"
+                                    name="plus"
+                                    type="button"
+                                    {% if item.instructions and item.instructions.can_update_quantity == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
                                     <span class="visually-hidden">
                                       {{-
                                         'products.product.quantity.increase'
@@ -355,6 +353,9 @@
                                   class="button button--tertiary cart-remove-button"
                                   aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
                                   data-variant-id="{{ item.variant.id }}"
+                                  {% if item.instructions and item.instructions.can_remove == false %}
+                                    class="hidden"
+                                  {% endif %}
                                 >
                                   <span class="svg-wrapper">
                                     {{- 'icon-remove.svg' | inline_asset_content -}}
@@ -514,7 +515,7 @@
 
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value"><span class="bcpo-cart-original-total">{{ cart.total_price | money_with_currency }}</span></p>
+            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
           </div>
 
           <small class="tax-note caption-large rte">
@@ -578,5 +579,3 @@
     </div>
   </div>
 </cart-drawer>
-
-<!-- bcpo done -->

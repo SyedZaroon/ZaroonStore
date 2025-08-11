@@ -66,7 +66,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-              {{- 'arrow-left-solid.svg' | inline_asset_content -}}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
           <div
@@ -100,14 +100,11 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
-                      <img src="{{ block.settings.image | image_url }}" width="20" height="20" alt="Icon" />
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
-                       {{- 'arrow-left-solid.svg' | inline_asset_content -}}
+                        {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}
-                      
                     </p>
-                    
                     {%- if block.settings.link != blank -%}
                       </a>
                     {%- endif -%}
@@ -124,7 +121,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-               {{- 'arrow-right-solid.svg' | inline_asset_content -}}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
         </div>
@@ -244,11 +241,6 @@
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
         },
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Add Image"
-        },
-        {
           "type": "url",
           "id": "link",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
@@ -268,27 +260,3 @@
   ]
 }
 {% endschema %}
-
-
-<script>
-document.querySelectorAll('.list-social__item').forEach(item => {
-  const link = item.querySelector('.list-social__link');
-
-  item.addEventListener('mousemove', (e) => {
-    const rect = item.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    // Scale down movement for subtle effect
-    const moveX = x * 0.2;
-    const moveY = y * 0.2;
-
-    link.style.transform = `translate(${moveX}px, ${moveY}px)`;
-  });
-
-  item.addEventListener('mouseleave', () => {
-    link.style.transform = 'translate(0, 0)';
-  });
-});
-</script>
-
