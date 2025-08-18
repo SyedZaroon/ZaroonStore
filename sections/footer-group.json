@@ -17,8 +17,9 @@
         "text_GzbcBf": {
           "type": "text",
           "settings": {
+            "footer-logo": "shopify://shop_images/Footer-logo.png",
             "heading": "Heading",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+            "subtext": "<p><strong>Address: </strong>451 Wall Street, UK, London<br/><strong>Phone:</strong> (064) 332-1233</p>"
           }
         },
         "link_list_aaytG6": {
@@ -31,8 +32,8 @@
         "text_Afnm4V": {
           "type": "text",
           "settings": {
-            "heading": "Heading",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+            "heading": "Connect",
+            "subtext": "<p>info@powerhouse.com</p>"
           }
         },
         "newsletter_NhQFnx": {

@@ -107,11 +107,11 @@
     "brand_headline": "",
     "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
+    "social_facebook_link": "#",
+    "social_instagram_link": "#",
     "social_youtube_link": "",
     "social_tiktok_link": "",
-    "social_twitter_link": "",
+    "social_twitter_link": "#",
     "social_snapchat_link": "",
     "social_pinterest_link": "",
     "social_tumblr_link": "",
@@ -146,6 +146,7 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
+          "heading_color": "#FB740F",
           "text": "#121212",
           "button": "#121212",
           "button_label": "#ffffff",
@@ -157,6 +158,7 @@
         "settings": {
           "background": "#242424",
           "background_gradient": "",
+          "heading_color": "#FB740F",
           "text": "#ffffff",
           "button": "#121212",
           "button_label": "#f3f3f3",
@@ -168,6 +170,7 @@
         "settings": {
           "background": "#242833",
           "background_gradient": "",
+          "heading_color": "#FB740F",
           "text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#000000",
@@ -179,6 +182,7 @@
         "settings": {
           "background": "#121212",
           "background_gradient": "",
+          "heading_color": "#FB740F",
           "text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#121212",
@@ -190,6 +194,7 @@
         "settings": {
           "background": "#334fb4",
           "background_gradient": "",
+          "heading_color": "#FB740F",
           "text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#334fb4",
