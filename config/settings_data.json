@@ -150,8 +150,7 @@
           "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
-          "shadow": "#121212",
-          "heading_color": "#FB740F"
+          "shadow": "#121212"
         }
       },
       "scheme-2": {
@@ -162,8 +161,7 @@
           "button": "#121212",
           "button_label": "#f3f3f3",
           "secondary_button_label": "#121212",
-          "shadow": "#121212",
-          "heading_color": "#FB740F"
+          "shadow": "#121212"
         }
       },
       "scheme-3": {
@@ -174,8 +172,7 @@
           "button": "#ffffff",
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212",
-          "heading_color": "#FB740F"
+          "shadow": "#121212"
         }
       },
       "scheme-4": {
@@ -186,8 +183,7 @@
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212",
-          "heading_color": "#FB740F"
+          "shadow": "#121212"
         }
       },
       "scheme-5": {
@@ -198,8 +194,7 @@
           "button": "#ffffff",
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212",
-          "heading_color": "#FB740F"
+          "shadow": "#121212"
         }
       }
     }
