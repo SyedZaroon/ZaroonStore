@@ -19,19 +19,6 @@
         "padding_top": 80,
         "padding_bottom": 40
       },
-      "blocks": {
-        "brand_information_RiKVB": {
-          "type": "brand_information",
-          "disabled": false,
-          "settings": {
-            "paragraph-c12c5b9b9661ad309b998a006531894c": null,
-            "show_social": true
-          }
-        }
-      },
-      "block_order": [
-        "brand_information_RiKVB"
-      ]
     }
   }
 }
