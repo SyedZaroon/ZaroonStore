@@ -150,7 +150,8 @@
           "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading_color": "#FB740F"
         }
       },
       "scheme-2": {
@@ -161,7 +162,8 @@
           "button": "#121212",
           "button_label": "#f3f3f3",
           "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading_color": "#FB740F"
         }
       },
       "scheme-3": {
@@ -172,7 +174,8 @@
           "button": "#ffffff",
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading_color": "#FB740F"
         }
       },
       "scheme-4": {
@@ -183,7 +186,8 @@
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading_color": "#FB740F"
         }
       },
       "scheme-5": {
@@ -194,7 +198,8 @@
           "button": "#ffffff",
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading_color": "#FB740F"
         }
       }
     }
@@ -211,7 +216,8 @@
             "button": "#121212",
             "button_label": "#FFFFFF",
             "secondary_button_label": "#121212",
-            "shadow": "#121212"
+            "shadow": "#121212",
+            "heading_color": "#FB740F"
           }
         },
         "scheme-2": {
@@ -222,7 +228,8 @@
             "button": "#121212",
             "button_label": "#F3F3F3",
             "secondary_button_label": "#121212",
-            "shadow": "#121212"
+            "shadow": "#121212",
+            "heading_color": "#FB740F"
           }
         },
         "scheme-3": {
@@ -233,7 +240,8 @@
             "button": "#FFFFFF",
             "button_label": "#000000",
             "secondary_button_label": "#FFFFFF",
-            "shadow": "#121212"
+            "shadow": "#121212",
+            "heading_color": "#FB740F"
           }
         },
         "scheme-4": {
@@ -244,7 +252,8 @@
             "button": "#FFFFFF",
             "button_label": "#121212",
             "secondary_button_label": "#FFFFFF",
-            "shadow": "#121212"
+            "shadow": "#121212",
+            "heading_color": "#FB740F"
           }
         },
         "scheme-5": {
@@ -255,7 +264,8 @@
             "button": "#FFFFFF",
             "button_label": "#334FB4",
             "secondary_button_label": "#FFFFFF",
-            "shadow": "#121212"
+            "shadow": "#121212",
+            "heading_color": "#FB740F"
           }
         }
       },

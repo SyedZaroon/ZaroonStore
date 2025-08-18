@@ -54,6 +54,12 @@
           },
           {
             "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#FB740F" 
+          },
+          {
+            "type": "color",
             "id": "text",
             "label": "t:settings_schema.colors.settings.text.label",
             "default": "#242424"
