@@ -8,16 +8,5 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "footer-group.json",
-  "context": {
-    "market": "pk"
-  },
-  "sections": {
-    "footer": {
-      "settings": {
-        "color_scheme": "scheme-2"
-      },
-      "blocks": {}
-    }
-  }
+  "markets": {}
 }
