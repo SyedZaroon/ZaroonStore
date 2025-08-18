@@ -27,7 +27,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-2",
-        "newsletter_enable": false,
+        "newsletter_enable": true,
         "newsletter_heading": "Subscrib",
         "enable_follow_on_shop": true,
         "show_social": true,
