@@ -14,37 +14,21 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "text_hyqNVr": {
+        "text_GzbcBf": {
           "type": "text",
           "settings": {
             "heading": "Heading",
-            "subtext": "<p>Share contact information, store details, and brand content with your customccdcers.</p>"
-          }
-        },
-        "link_list_e6bxFr": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
-          }
-        },
-        "link_list_bJjdfm": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
           }
         }
       },
       "block_order": [
-        "text_hyqNVr",
-        "link_list_e6bxFr",
-        "link_list_bJjdfm"
+        "text_GzbcBf"
       ],
       "settings": {
         "color_scheme": "scheme-2",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "Subscribe",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,
