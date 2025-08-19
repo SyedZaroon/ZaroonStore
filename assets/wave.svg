@@ -1,0 +1,7 @@
+   <svg class="wave" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+      <path class="stroke"
+            d="M0,40
+               C150,0 300,80 450,40
+               S750,0 900,40
+               S1050,80 1200,40" />
+    </svg>
