@@ -26,9 +26,119 @@
         "background_color": "#fdf7f0",
         "accent_color": "#ff6b35"
       }
+    },
+    "daily_habits_matter_ftRqnh": {
+      "type": "daily-habits-matter",
+      "blocks": {
+        "habit_card_FnNKUn": {
+          "type": "habit_card",
+          "settings": {
+            "img_type": "shopify://shop_images/Frame.png",
+            "title": "Signature Power Shakes",
+            "description": "Our shakes support your body and mind with nourishing ingredients for lasting energy and focus."
+          }
+        },
+        "habit_card_UqJbDG": {
+          "type": "habit_card",
+          "settings": {
+            "img_type": "shopify://shop_images/Frame2.png",
+            "title": "Sip to Feel Better",
+            "description": "Enjoy our power shakes and adaptogen coffees that help you stay focused and energized throughout the day."
+          }
+        },
+        "habit_card_KDJpNa": {
+          "type": "habit_card",
+          "settings": {
+            "img_type": "shopify://shop_images/Frame3.png",
+            "title": "Adaptogen Coffees",
+            "description": "Enjoy delicious blends that help manage stress and enhance well-being with every sip."
+          }
+        },
+        "habit_card_P7Lqwb": {
+          "type": "habit_card",
+          "settings": {
+            "img_type": "shopify://shop_images/Frame4.png",
+            "title": "Find Calm in Every Sip",
+            "description": "Our adaptogen-infused coffees naturally help your body manage stress and feel more balanced."
+          }
+        }
+      },
+      "block_order": [
+        "habit_card_FnNKUn",
+        "habit_card_UqJbDG",
+        "habit_card_KDJpNa",
+        "habit_card_P7Lqwb"
+      ],
+      "name": "Daily Habits Matter",
+      "settings": {
+        "tag_text": "Daily Habits Matter",
+        "title": "Foundation for Healthier Life",
+        "subtitle": "Choose Powerhouse for delicious drinks that boost energy, focus, and wellness with adaptogen support.",
+        "background_color": "#f8f9fa",
+        "accent_color": "#ff6b35",
+        "text_color": "#2c2c2c"
+      }
+    },
+    "product_overview_4nzw7E": {
+      "type": "product-overview",
+      "blocks": {
+        "benefit_card_4BALzj": {
+          "type": "benefit_card",
+          "settings": {
+            "position": "left",
+            "icon_type": "stress",
+            "title": "Stress Reduction",
+            "description": "Adaptogens like Ashwagandha help by lowering cortisol levels, the stress hormone, reducing anxiety and promoting relaxation."
+          }
+        },
+        "benefit_card_BpCXN3": {
+          "type": "benefit_card",
+          "settings": {
+            "position": "left",
+            "icon_type": "brain",
+            "title": "Enhanced Cognitive Function",
+            "description": "Adaptogens such as Lion's Mane and Reishi can improve focus, memory, and overall cognitive performance."
+          }
+        },
+        "benefit_card_4U9JJt": {
+          "type": "benefit_card",
+          "settings": {
+            "position": "right",
+            "icon_type": "shield",
+            "title": "Boosted Immunity",
+            "description": "Adaptogens like Chaga and Cordyceps can strengthen the immune system, helping you fight off infections."
+          }
+        },
+        "benefit_card_DMP6hw": {
+          "type": "benefit_card",
+          "settings": {
+            "position": "right",
+            "icon_type": "energy",
+            "title": "Increased Energy Levels",
+            "description": "Adaptogens like Maca and Panax Ginseng can provide sustained energy without the jitters."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_card_4BALzj",
+        "benefit_card_BpCXN3",
+        "benefit_card_4U9JJt",
+        "benefit_card_DMP6hw"
+      ],
+      "name": "Product Overview",
+      "settings": {
+        "tag_text": "Support Your",
+        "title": "Well-being Discover Inner Strength",
+        "product_image": "shopify://shop_images/image_12.png",
+        "background_color": "#fdf7f0",
+        "accent_color": "#ff6b35",
+        "text_color": "#2c2c2c"
+      }
     }
   },
   "order": [
-    "image_banner"
+    "image_banner",
+    "daily_habits_matter_ftRqnh",
+    "product_overview_4nzw7E"
   ]
 }

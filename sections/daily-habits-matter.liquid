@@ -1,0 +1,259 @@
+{%- liquid
+  assign bg_color = section.settings.background_color | default: '#F8F9FA'
+  assign accent_color = section.settings.accent_color | default: '#FF6B35'
+  assign accent_color_rgb = accent_color | color_to_rgb | remove: 'rgb(' | remove: ')'
+  assign text_color = section.settings.text_color | default: '#2C2C2C'
+-%}
+
+<style>
+    .daily-habits-section {
+      background-color: {{ bg_color }};
+      text-align: center;
+    }
+
+    .daily-habits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .daily-habits-tag {
+      display: inline-block;
+      color: {{ accent_color }};
+      font-weight: 500;
+  margin: 0 0 10px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .daily-habits-title {
+      color: {{ text_color }};
+      margin: 0 0 10px 0;
+    }
+
+    .daily-habits-subtitle {
+      color: #666666;
+      line-height: 1.6;
+      margin: 0 auto clamp(40px, 6vw, 73px) auto;
+      max-width: 600px;
+    }
+
+    .habits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(20px, 4vw, 40px);
+      margin-top: clamp(40px, 6vw, 60px);
+    }
+
+    .habit-img img {
+      width: 50px;
+      margin:0px auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .habit-card-title {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 700;
+      color: {{ text_color }};
+      margin: 0 0 clamp(8px, 1vw, 12px) 0;
+      line-height: 1.3;
+    }
+
+    .habit-card-description {
+      font-size: clamp(13px, 1.5vw, 16px);
+      color: #666666;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .habits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: clamp(16px, 3vw, 24px);
+      }
+
+      .habit-card {
+        padding: clamp(20px, 4vw, 28px) clamp(16px, 3vw, 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .habits-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+    }
+</style>
+
+<div class="daily-habits-section section-padding">
+  <div class="daily-habits-container page-width">
+    {%- if section.settings.tag_text != blank -%}
+      <div class="daily-habits-tag h2">{{ section.settings.tag_text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="daily-habits-title section-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="daily-habits-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    <div class="habits-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'habit_card' -%}
+          <div class="habit-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.img_type != blank -%}
+
+            <div class="habit-img">
+              <img src="{{ block.settings.img_type | image_url }}"
+                width="auto"
+                height="auto"
+              >
+            </div>
+
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="habit-card-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="habit-card-description">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Daily Habits Matter",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "default": "Daily Habits Matter",
+      "info": "Small text above the main title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Foundation for Healthier Life",
+      "info": "Main heading for the section"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Choose Powerhouse for delicious drinks that boost energy, focus, and wellness with adaptogen support.",
+      "info": "Description text below the title"
+    },
+    {
+      "type": "header",
+      "content": "Design Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F8F9FA"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#FF6B35",
+      "info": "Color for icons and accent elements"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#2C2C2C"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "habit_card",
+      "name": "Habit Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_type",
+          "label": "Image",
+          "info": "Recomended Size 100*100"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Signature Power Shakes"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Our shakes support your body and mind with nourishing ingredients for lasting energy and focus."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Daily Habits Matter",
+      "settings": {
+        "tag_text": "Daily Habits Matter",
+        "title": "Foundation for Healthier Life",
+        "subtitle": "Choose Powerhouse for delicious drinks that boost energy, focus, and wellness with adaptogen support."
+      },
+      "blocks": [
+        {
+          "type": "habit_card",
+          "settings": {
+            "title": "Signature Power Shakes",
+            "description": "Our shakes support your body and mind with nourishing ingredients for lasting energy and focus."
+          }
+        },
+        {
+          "type": "habit_card",
+          "settings": {
+            "title": "Sip to Feel Better",
+            "description": "Enjoy our power shakes and adaptogen coffees that help you stay focused and energized throughout the day."
+          }
+        },
+        {
+          "type": "habit_card",
+          "settings": {
+            "title": "Adaptogen Coffees",
+            "description": "Enjoy delicious blends that help manage stress and enhance well-being with every sip."
+          }
+        },
+        {
+          "type": "habit_card",
+          "settings": {
+            "title": "Find Calm in Every Sip",
+            "description": "Our adaptogen-infused coffees naturally help your body manage stress and feel more balanced."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
