@@ -21,6 +21,20 @@
     margin:0px auto 10px;
     color: #ff6b35;
   }
+
+  .article-card__image-wrapper,
+  .card__inner{
+    border-radius:12px 12px 0px 0px !important;
+  }
+
+  .blog__posts .article-card .card__information{
+    padding-left:1rem;
+    padding-right:1rem;
+    background-color:white;
+    border-width:0px 1px 1px 1px;
+    border-style:dashed;
+    border-radius:0px 0px 12px 12px;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -264,12 +278,6 @@
       "id": "show_date",
       "default": true,
       "label": "t:sections.featured-blog.settings.show_date.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author",
-      "default": false,
-      "label": "t:sections.featured-blog.settings.show_author.label"
     },
     {
       "type": "checkbox",
