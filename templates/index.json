@@ -135,13 +135,69 @@
         "text_color": "#2c2c2c"
       }
     },
+    "custom_categories_FBPK93": {
+      "type": "custom-categories",
+      "blocks": {
+        "category_hHbgfY": {
+          "type": "category",
+          "settings": {
+            "category_name": "Accessories",
+            "collection": "accessories",
+            "view_more_text": "View More"
+          }
+        },
+        "category_Jrf9Pg": {
+          "type": "category",
+          "settings": {
+            "category_name": "Games",
+            "collection": "games",
+            "view_more_text": "View More"
+          }
+        },
+        "category_gmkfy9": {
+          "type": "category",
+          "settings": {
+            "category_name": "Laptops",
+            "collection": "laptops",
+            "view_more_text": "View More"
+          }
+        },
+        "category_h9c99B": {
+          "type": "category",
+          "settings": {
+            "category_name": "Tablets",
+            "collection": "tablets",
+            "view_more_text": "View More"
+          }
+        }
+      },
+      "block_order": [
+        "category_hHbgfY",
+        "category_Jrf9Pg",
+        "category_gmkfy9",
+        "category_h9c99B"
+      ],
+      "name": "Custom Categories",
+      "settings": {
+        "tagline": "Adaptogen Coffee Delights",
+        "heading": "Powerful Nutrition Choices",
+        "description": "Our Signature Power Shakes and Adaptogen-infused Coffees are crafted to support your ambitious goals every morning.",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "section_bg_color": "#f8f9fa"
+      }
+    },
     "featured_blog_9UYPzq": {
       "type": "featured-blog",
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "blog": "news",
         "post_limit": 4,
-        "heading": "Blog posts",
+        "heading": "Information, Tips & Tricks",
         "main_heading": "Latest News & Blogs",
         "columns_desktop": 4,
         "show_view_all": false,
@@ -172,6 +228,7 @@
     "image_banner",
     "daily_habits_matter_ftRqnh",
     "product_overview_4nzw7E",
+    "custom_categories_FBPK93",
     "featured_blog_9UYPzq",
     "pre_footer_gt68Gb"
   ]
