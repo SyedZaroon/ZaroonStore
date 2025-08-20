@@ -6,14 +6,18 @@
 -%}
 
 <style>
-  .pre-footer-section {
+  .pre-footer-wrapper {
     background: {{ bg_color }};
+    padding: clamp(40px, 6vw, 80px) 20px;
+  }
+  
+  .pre-footer-section {
     color: {{ text_color }};
     position: relative;
-    overflow: hidden;
-    border-radius: clamp(20px, 3vw, 40px);
-    margin: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 40px);
-  }
+    border-radius: 20px;
+    margin: 0 auto;
+    background-color:{{ section.settings.content_background_color }} 
+    }
 
   .pre-footer-container {
     display: grid;
@@ -28,15 +32,9 @@
     position: relative;
   }
 
-  .pre-footer-tag {
-    color: {{ text_color }};
-    margin-bottom: clamp(12px, 2vw, 20px);
-    opacity: 0.9;
-  }
-
   .pre-footer-title {
     color: {{ text_color }};
-    margin: 0 0 clamp(16px, 3vw, 24px) 0;
+    margin: 0 0 12px 0;
   }
 
   .pre-footer-description {
@@ -76,86 +74,47 @@
   }
 
   .pre-footer-image-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: -4%;
   }
 
   .pre-footer-image {
     max-width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 502px;
     object-fit: contain;
   }
 
-  /* Decorative elements */
-  .pre-footer-section::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    top: -150px;
-    right: -150px;
-    z-index: 1;
-  }
-
-  .pre-footer-section::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 50%;
-    bottom: -100px;
-    left: -100px;
-    z-index: 1;
-  }
-
   /* Responsive Design */
-  @media (max-width: 1024px) {
-    .pre-footer-container {
-      grid-template-columns: 1fr;
-      gap: clamp(30px, 5vw, 40px);
-      text-align: center;
-    }
 
-    .pre-footer-description {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .pre-footer-section {
-      margin: clamp(30px, 5vw, 60px) clamp(16px, 4vw, 24px);
-      border-radius: clamp(16px, 2vw, 24px);
-    }
+  @media (max-width: 900px) {
 
     .pre-footer-container {
-      min-height: 300px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .pre-footer-section {
-      margin: clamp(20px, 4vw, 40px) clamp(12px, 3vw, 16px);
+    grid-template-columns: 1fr;
+    text-align: center;
     }
 
-    .pre-footer-container {
-      gap: clamp(20px, 4vw, 30px);
+    .pre-footer-image-wrapper{
+      position:unset;
     }
+
+    .pre-footer-description{
+      max-width:unset;
+    }
+    .pre-footer-container{
+      gap:unset;
+      padding: 40px 20px 0px 20px;
+    }
+
   }
+
 </style>
 
-<div class="pre-footer-section section-padding">
-  <div class="pre-footer-container page-width">
+<div class="pre-footer-wrapper">
+  <div class="pre-footer-section page-width">
+    <div class="pre-footer-container">
     <div class="pre-footer-content">
-      {%- if section.settings.tag_text != blank -%}
-        <div class="pre-footer-tag h2">{{ section.settings.tag_text }}</div>
-      {%- endif -%}
       
       {%- if section.settings.title != blank -%}
         <h2 class="pre-footer-title section-title">{{ section.settings.title }}</h2>
@@ -167,9 +126,19 @@
       
       {%- if section.settings.button_label != blank -%}
         <a href="{{ section.settings.button_link | default: '#' }}" class="pre-footer-button">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V17C19 18.1 18.1 19 17 19H7C5.9 19 5 18.1 5 17V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V17H17V6H7Z"/>
-          </svg>
+         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_97_229)">
+<path d="M15.142 2.718C14.9545 2.49296 14.7197 2.31197 14.4544 2.18788C14.189 2.06379 13.8996 1.99964 13.6067 2H2.828L2.8 1.766C2.7427 1.27961 2.50892 0.831155 2.14299 0.505652C1.77706 0.180149 1.30442 0.000227862 0.814667 0L0.666667 0C0.489856 0 0.320286 0.0702379 0.195262 0.195262C0.0702379 0.320286 0 0.489856 0 0.666667C0 0.843478 0.0702379 1.01305 0.195262 1.13807C0.320286 1.2631 0.489856 1.33333 0.666667 1.33333H0.814667C0.977956 1.33335 1.13556 1.3933 1.25758 1.50181C1.3796 1.61032 1.45756 1.75983 1.47667 1.922L2.394 9.722C2.48923 10.5332 2.87899 11.2812 3.48927 11.824C4.09956 12.3668 4.8879 12.6667 5.70467 12.6667H12.6667C12.8435 12.6667 13.013 12.5964 13.1381 12.4714C13.2631 12.3464 13.3333 12.1768 13.3333 12C13.3333 11.8232 13.2631 11.6536 13.1381 11.5286C13.013 11.4036 12.8435 11.3333 12.6667 11.3333H5.70467C5.29204 11.3322 4.88987 11.2034 4.55329 10.9647C4.21671 10.726 3.96221 10.389 3.82467 10H11.7713C12.5529 10 13.3096 9.72549 13.9092 9.22429C14.5089 8.7231 14.9134 8.02713 15.052 7.258L15.5753 4.35533C15.6276 4.06734 15.6158 3.77138 15.5409 3.48843C15.4661 3.20547 15.3299 2.94245 15.142 2.718Z" fill="#FB740F"/>
+<path d="M4.66671 15.9999C5.40309 15.9999 6.00004 15.403 6.00004 14.6666C6.00004 13.9302 5.40309 13.3333 4.66671 13.3333C3.93033 13.3333 3.33337 13.9302 3.33337 14.6666C3.33337 15.403 3.93033 15.9999 4.66671 15.9999Z" fill="#FB740F"/>
+<path d="M11.3333 15.9999C12.0697 15.9999 12.6667 15.403 12.6667 14.6666C12.6667 13.9302 12.0697 13.3333 11.3333 13.3333C10.597 13.3333 10 13.9302 10 14.6666C10 15.403 10.597 15.9999 11.3333 15.9999Z" fill="#FB740F"/>
+</g>
+<defs>
+<clipPath id="clip0_97_229">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
           {{ section.settings.button_label }}
         </a>
       {%- endif -%}
@@ -178,16 +147,17 @@
     <div class="pre-footer-image-wrapper">
       {%- if section.settings.product_image != blank -%}
         <img 
-          src="{{ section.settings.product_image | image_url: width: 500 }}" 
+          src="{{ section.settings.product_image | image_url }}" 
           alt="{{ section.settings.product_image.alt | escape }}"
           class="pre-footer-image"
           loading="lazy"
-          width="500"
+          width="auto"
           height="auto"
         >
       {%- endif -%}
     </div>
   </div>
+</div>
 </div>
 
 {% schema %}
@@ -202,13 +172,6 @@
     {
       "type": "header",
       "content": "Section Content"
-    },
-    {
-      "type": "text",
-      "id": "tag_text",
-      "label": "Tag Text",
-      "default": "Reduce Your Stress with Every Sip",
-      "info": "Small text above the main title"
     },
     {
       "type": "text",
@@ -253,8 +216,14 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background Color",
-      "default": "#FF6B35"
+      "label": "Section Background Color",
+      "default": "#F8F9FA"  
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content Background Color",
+      "default": "#FF6B35" 
     },
     {
       "type": "color",
@@ -279,7 +248,6 @@
     {
       "name": "Pre Footer",
       "settings": {
-        "tag_text": "Reduce Your Stress with Every Sip",
         "title": "Reduce Your Stress with Every Sip",
         "description": "Discover the soothing comfort in our power shakes and adaptogen-infused coffees. Nurture yourself with each delicious choice.",
         "button_label": "Go to Shop"

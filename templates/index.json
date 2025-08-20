@@ -155,15 +155,16 @@
       "type": "pre-footer",
       "name": "Pre Footer",
       "settings": {
-        "tag_text": "Reduce Your Stress with Every Sip",
         "title": "Reduce Your Stress with Every Sip",
         "description": "Discover the soothing comfort in our power shakes and adaptogen-infused coffees. Nurture yourself with each delicious choice.",
         "button_label": "Go to Shop",
         "button_link": "",
-        "background_color": "#FF6B35",
-        "text_color": "#FFFFFF",
-        "button_background": "#FFFFFF",
-        "button_text_color": "#FF6B35"
+        "product_image": "shopify://shop_images/image_26.png",
+        "background_color": "#f8f9fa",
+        "content_background_color": "#fb740f",
+        "text_color": "#ffffff",
+        "button_background": "#ffffff",
+        "button_text_color": "#ff6b35"
       }
     }
   },
