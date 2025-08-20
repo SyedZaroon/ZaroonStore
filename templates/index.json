@@ -134,11 +134,28 @@
         "accent_color": "#ff6b35",
         "text_color": "#2c2c2c"
       }
+    },
+    "featured_blog_9UYPzq": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "",
+        "post_limit": 4,
+        "heading": "Blog posts",
+        "main_heading": "Latest News & Blogs",
+        "columns_desktop": 4,
+        "show_view_all": false,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "bg_color": "#fdf7f0"
+      }
     }
   },
   "order": [
     "image_banner",
     "daily_habits_matter_ftRqnh",
-    "product_overview_4nzw7E"
+    "product_overview_4nzw7E",
+    "featured_blog_9UYPzq"
   ]
 }
