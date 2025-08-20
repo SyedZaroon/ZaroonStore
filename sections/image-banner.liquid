@@ -105,18 +105,6 @@
     line-height: 1.6;
   }
   
-  #Banner-{{ section.id }} .protein-banner__button {
-    display: inline-flex;
-    align-items: center;
-    background: {{ accent_color }};
-    color: white;
-    padding: 12px 32px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position:relative;
-  }
 
   .btn-img{
     position:absolute;
@@ -133,11 +121,7 @@
     font-size: 28px;
   }
   
-  #Banner-{{ section.id }} .protein-banner__button:hover {
-    background: {{ accent_color_hover }};
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba({{ accent_color_rgb }}, 0.4);
-  }
+
   
   #Banner-{{ section.id }} .protein-banner__image-wrapper {
     position: relative;
@@ -211,7 +195,7 @@
       {%- endif -%}
       
       {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_link | default: '#' }}" class="protein-banner__button">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="primary-btn">
           {{ section.settings.button_label }}
 
           {%- if section.settings.button_tagline !=blank -%}

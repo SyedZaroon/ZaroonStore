@@ -1,0 +1,332 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'custom-categories.css' | asset_url | stylesheet_tag }}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<script src="{{ 'custom-categories.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    .custom-categories {
+    position: relative;
+    background-color: {{section.settings.section_bg_color}};
+  }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+{%- endstyle -%}
+
+<div class="section-padding custom-categories ">
+  <div
+    class="custom-categories section-{{ section.id }}-padding page-width"
+    id="CustomCategories-{{ section.id }}"
+    data-id="{{ section.id }}"
+  >
+    {%- if section.settings.tagline != blank -%}
+      <div class="custom-categories__header">
+        <h2 class="h2 tagline">
+          {{ section.settings.tagline }}
+        </h2>
+        {%- if section.settings.heading != blank -%}
+          <p class="section-title">{{ section.settings.heading }}</p>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="custom-categories__description rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} section-subtitle">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <!-- Category Navigation -->
+      <div class="category-list">
+        {%- for block in section.blocks -%}
+          <button 
+            class="category-tab{% if forloop.first %} active{% endif %}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="category-{{ section.id }}-{{ forloop.index }}"
+            id="tab-{{ section.id }}-{{ forloop.index }}"
+            data-category-index="{{ forloop.index0 }}"
+            onclick="switchCategory({{ forloop.index0 }}, '{{ section.id }}')"
+          >
+            {{ block.settings.category_name }}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      <!-- Category Content -->
+      <div class="custom-categories__content">
+        {%- for block in section.blocks -%}
+          {%- assign collection = collections[block.settings.collection] -%}
+          
+          <div 
+            class="custom-categories__category{% if forloop.first %} active{% endif %}"
+            id="category-{{ section.id }}-{{ forloop.index }}"
+            role="tabpanel"
+            aria-labelledby="tab-{{ section.id }}-{{ forloop.index }}"
+            data-category-index="{{ forloop.index0 }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if collection != blank and collection.products.size > 0 -%}
+              <div class="custom-categories__products-grid">
+                {%- assign products_to_show = 4 -%}
+                {%- assign skip_card_product_styles = false -%}
+
+                {%- for product in collection.products limit: products_to_show -%}
+                  <div class="custom-categories__product-item">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      image_shape: section.settings.image_shape,
+                      lazy_load: false,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      skip_styles: skip_card_product_styles,
+                      section_id: section.id,
+                      quick_add: section.settings.quick_add
+                    %}
+                  </div>
+                  {%- assign skip_card_product_styles = true -%}
+                {%- endfor -%}
+              </div>
+
+              {%- if collection.products.size > products_to_show -%}
+                <div class="custom-categories__view-more">
+                  <a
+                    href="{{ collection.url }}"
+                    class="primary-btn"
+                  >
+                    {{ block.settings.view_more_text | default: 'View More' }}
+                  </a>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              <div class="custom-categories__empty">
+                <p>{{ 'sections.custom_categories.no_products' | t }}</p>
+              </div>
+             {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+    {%- else -%}
+      <div class="custom-categories__placeholder">
+        <p>{{ 'sections.custom_categories.no_categories' | t }}</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Categories",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tagline",
+      "default": "Adaptogen Coffee Delights",
+      "label": "TagLine"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Powerful Nutrition Choices",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "default": "Our Signature Power Shakes and Adaptogen-infused Coffees are crafted to support your ambitious goals every morning.",
+      "label": "Description"
+    },
+
+    {
+      "type": "header",
+      "content": "Product Settings"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.all.image_shape.options__1.label"
+        },
+        {
+          "value": "arch",
+          "label": "t:sections.all.image_shape.options__2.label"
+        },
+        {
+          "value": "blob",
+          "label": "t:sections.all.image_shape.options__3.label"
+        },
+        {
+          "value": "chevronleft",
+          "label": "t:sections.all.image_shape.options__4.label"
+        },
+        {
+          "value": "chevronright",
+          "label": "t:sections.all.image_shape.options__5.label"
+        },
+        {
+          "value": "diamond",
+          "label": "t:sections.all.image_shape.options__6.label"
+        },
+        {
+          "value": "parallelogram",
+          "label": "t:sections.all.image_shape.options__7.label"
+        },
+        {
+          "value": "round",
+          "label": "t:sections.all.image_shape.options__8.label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.all.image_shape.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_rating.label",
+      "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Color Setting"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#F8F9FA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "default": "Category Name",
+          "label": "Category Name"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "view_more_text",
+          "default": "View More",
+          "label": "View More Button Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Protein Shakes"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Snacks"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Power Blends"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

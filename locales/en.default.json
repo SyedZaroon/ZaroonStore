@@ -383,6 +383,11 @@
       "min_error": "This item has a minimum of {{ min }}",
       "max_error": "This item has a maximum of {{ max }}",
       "step_error": "You can only add this item in increments of {{ step }}"
+    },
+    "custom_categories": {
+      "view_more_label": "View all products in the {{ collection_name }} collection",
+      "no_products": "No products available in this category",
+      "no_categories": "Please add categories to display products"
     }
   },
   "localization": {
