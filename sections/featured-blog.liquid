@@ -4,16 +4,22 @@
 {{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  .blog
+  {
+    background-color:{{ section.settings.bg_color }};
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+  .blog-heading{
+    margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 80px;
+  }
+
+  .blog-tagline{
+    margin:0px auto 10px;
+    color: #ff6b35;
   }
 {%- endstyle -%}
 
@@ -24,19 +30,18 @@
     assign posts_displayed = section.settings.post_limit
   endif
 -%}
-<div class="blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+<div class="blog section-padding color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
   <div class="page-width-desktop isolate{% if posts_displayed < 3 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.heading == blank -%}
-      <div class="title-wrapper-with-link{% if posts_displayed > 2 %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
+      <div class="blog-heading">
         <h2
-          id="SectionHeading-{{ section.id }}"
-          class="blog__title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-          {% endif %}
+          id="SectionHeading-{{ section.id }} "
+          class="h2 blog-tagline "
         >
           {{ section.settings.heading }}
         </h2>
+
+        <div class="section-title">{{ section.settings.main_heading }}</div>
 
         {%- if section.settings.blog != blank
           and section.settings.show_view_all
@@ -215,45 +220,23 @@
     {
       "type": "header",
       "content": "t:sections.featured-blog.settings.text_header.content"
-    },            
+    },
     {
       "type": "inline_richtext",
       "id": "heading",
-      "default": "t:sections.featured-blog.settings.heading.default",
-      "label": "t:sections.featured-blog.settings.heading.label"
+      "default": "Information, Tips & Tricks",
+      "label": "Tag Text"
     },
     {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "type": "text",
+      "id": "main_heading",
+      "default": "Latest News & Blogs",
+      "label": "Main Heading"
     },
     {
       "type": "header",
       "content": "t:sections.featured-blog.settings.layout_header.content"
-    },        
+    },
     {
       "type": "range",
       "id": "columns_desktop",
@@ -269,7 +252,7 @@
       "default": true,
       "label": "t:sections.featured-blog.settings.show_view_all.label",
       "info": "t:sections.featured-blog.settings.show_view_all.info"
-    },    
+    },
     {
       "type": "checkbox",
       "id": "show_image",
@@ -289,35 +272,20 @@
       "label": "t:sections.featured-blog.settings.show_author.label"
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info",
-      "default": "scheme-1"
-    },    
+      "type": "checkbox",
+      "id": "show_read",
+      "default": true,
+      "label": "Read More"
+    },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Color"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDF7F0"
     }
   ],
   "presets": [
