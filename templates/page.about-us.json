@@ -11,13 +11,31 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "image_banner_FXAhPq": {
+      "type": "image-banner",
+      "name": "Image Banner",
+      "settings": {
+        "tag_line": "",
+        "title_part_1": "Fuel Your",
+        "title_highlight": "Wellness",
+        "title_part_2": "with Nature’s Power",
+        "subtitle": "Discover how daily habits build a healthier, vibrant life with our unique beverages.",
+        "button_label": "Shop Now",
+        "button_tagline": "",
+        "button_link": "",
+        "background_color": "#FDF7F0",
+        "accent_color": "#FF6B35"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_banner_FXAhPq"
   ]
 }
