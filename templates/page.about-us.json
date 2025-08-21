@@ -29,6 +29,7 @@
         "button_label": "Shop Now",
         "button_tagline": "",
         "button_link": "",
+        "glass_image": "shopify://shop_images/glass.png",
         "background_color": "#FDF7F0",
         "accent_color": "#FF6B35"
       }
