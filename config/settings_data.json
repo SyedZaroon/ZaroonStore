@@ -181,10 +181,10 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "#f8f9fa",
           "background_gradient": "",
           "heading_color": "#fb740f",
-          "text": "#ffffff",
+          "text": "#121212",
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",

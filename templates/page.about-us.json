@@ -1,0 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_FXAhPq": {
+      "type": "image-banner",
+      "name": "Image Banner",
+      "settings": {
+        "tag_line": "",
+        "title_part_1": "Fuel Your",
+        "title_highlight": "Wellness",
+        "title_part_2": "with Nature’s Power",
+        "subtitle": "Discover how daily habits build a healthier, vibrant life with our unique beverages.",
+        "button_label": "Shop Now",
+        "button_tagline": "",
+        "button_link": "",
+        "product_image": "shopify://shop_images/image_26_3cd72175-e728-4655-9296-ddd9833e50ca.png",
+        "glass_image": "shopify://shop_images/glass.png",
+        "background_color": "#FDF7F0",
+        "accent_color": "#FF6B35"
+      }
+    },
+    "image_with_text_BJBze6": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_QzwDza": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_hreJ8D": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_jCtXPN": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_QzwDza",
+        "text_hreJ8D",
+        "button_jCtXPN"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/image.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_FXAhPq",
+    "image_with_text_BJBze6"
+  ]
+}
