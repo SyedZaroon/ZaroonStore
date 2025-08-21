@@ -1,0 +1,298 @@
+{%- liquid
+  assign bg_color = section.settings.background_color | default: '#FFFFFF'
+  assign accent_color = section.settings.accent_color | default: '#FF6B35'
+  assign text_color = section.settings.text_color | default: '#2C2C2C'
+  assign button_color = section.settings.button_color | default: '#FF6B35'
+  assign button_text_color = section.settings.button_text_color | default: '#FFFFFF'
+-%}
+
+<style>
+  .quality-commitment-section {
+    background-color: {{ bg_color }};
+  }
+
+  .quality-commitment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+
+  .quality-commitment-text {
+    padding-right: 20px;
+  }
+
+  .quality-commitment-description {
+    color: #666666;
+  }
+
+
+  .quality-commitment-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(12px, 2vw, 20px);
+    height: 400px;
+  }
+
+  .quality-commitment-image {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .quality-commitment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .quality-commitment-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .quality-commitment-image.large {
+    grid-row: span 2;
+  }
+
+  .quality-commitment-image.small {
+    height: calc((400px - 10px) / 2);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .quality-commitment-content {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 40px);
+    }
+
+    .quality-commitment-text {
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .quality-commitment-images {
+      height: 300px;
+    }
+
+    .quality-commitment-image.small {
+      height: calc((300px - 10px) / 2);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quality-commitment-images {
+      grid-template-columns: 1fr;
+      height: auto;
+      gap: 16px;
+    }
+
+    .quality-commitment-image {
+      height: 200px;
+    }
+
+    .quality-commitment-image.large,
+    .quality-commitment-image.small {
+      grid-row: span 1;
+      height: 200px;
+    }
+  }
+</style>
+
+<div class="quality-commitment-section section-padding">
+  <div class="page-width">
+    <div class="quality-commitment-content">
+      <div class="quality-commitment-text">
+        {%- if section.settings.tag_text != blank -%}
+          <div class="h2 tagline">{{ section.settings.tag_text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <p class="quality-commitment-description">{{ section.settings.description }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
+          <a href="{{ section.settings.button_url }}" class="primary-btn">
+            {{ section.settings.button_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <div class="quality-commitment-images">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'image' -%}
+            <div class="quality-commitment-image {{ block.settings.image_size }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img 
+                  src="{{ block.settings.image | image_url: width: 600 }}" 
+                  alt="{{ block.settings.image.alt | default: section.settings.title }}"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                >
+              {%- else -%}
+                <div class="placeholder-image" style="background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
+                  <span>{{ 'sections.image_with_text.image' | t }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quality Commitment",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "default": "A Healthy Sip",
+      "info": "Small text above the main title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Our Commitment to Quality and Wellness",
+      "info": "Main heading for the section"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "At our powerhouse, we prioritize quality and integrity in every product. From signature power shakes to adaptogen-infused coffees, our commitment is to provide exceptional taste with trustworthy ingredients that supports your well-being every day.",
+      "info": "Description text below the title"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now",
+      "info": "Text for the call-to-action button"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "info": "Link for the call-to-action button"
+    },
+    {
+      "type": "header",
+      "content": "Design Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F8F9FA"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#FF6B35",
+      "info": "Color for tag text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#2C2C2C"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Background Color",
+      "default": "#FF6B35"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended size: 600x400px"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "options": [
+            {
+              "value": "large",
+              "label": "Large (spans 2 rows)"
+            },
+            {
+              "value": "small",
+              "label": "Small"
+            }
+          ],
+          "default": "small",
+          "info": "Choose how much space this image takes up"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Quality Commitment",
+      "settings": {
+        "tag_text": "A Healthy Sip",
+        "title": "Our Commitment to Quality and Wellness",
+        "description": "At our powerhouse, we prioritize quality and integrity in every product. From signature power shakes to adaptogen-infused coffees, our commitment is to provide exceptional taste with trustworthy ingredients that supports your well-being every day.",
+        "button_text": "Shop Now",
+        "button_url": "/collections/all"
+      },
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "image_size": "large"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_size": "small"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image_size": "small"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

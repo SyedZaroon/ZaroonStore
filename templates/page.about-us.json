@@ -124,8 +124,8 @@
         "title": "Adaptogen-Infused Beverages",
         "subtitle": "Our secret weapon? Adaptogens – nature's stress-fighting heroes. Each blend is thoughtfully crafted to support your well-being, using nature's best ingredients. Experience the balance and nourishment our adaptogens bring, enhancing your daily routine with each sip.",
         "background_color": "#fdf7f0",
-        "accent_color": "#FF6B35",
-        "text_color": "#2C2C2C"
+        "accent_color": "#ff6b35",
+        "text_color": "#2c2c2c"
       }
     },
     "pre_footer_Yrjwkx": {
@@ -138,10 +138,46 @@
         "button_link": "",
         "product_image": "shopify://shop_images/image_26.png",
         "background_color": "#fdf7f0",
-        "content_background_color": "#FF6B35",
-        "text_color": "#FFFFFF",
-        "button_background": "#FFFFFF",
-        "button_text_color": "#FF6B35"
+        "content_background_color": "#ff6b35",
+        "text_color": "#ffffff",
+        "button_background": "#ffffff",
+        "button_text_color": "#ff6b35"
+      }
+    },
+    "quality_commitment_VkBwQQ": {
+      "type": "quality-commitment",
+      "blocks": {
+        "image_cUVe3k": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_adfe2007-60b1-44a5-84c3-39522df0b5ed.png",
+            "image_size": "large"
+          }
+        },
+        "image_NhWMxJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/32.png",
+            "image_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_cUVe3k",
+        "image_NhWMxJ"
+      ],
+      "name": "Quality Commitment",
+      "settings": {
+        "tag_text": "A Healthy Sip",
+        "title": "Our Commitment to Quality and Wellness",
+        "description": "At our powerhouse, we prioritize quality and integrity in every product. From signature power shakes to adaptogen-infused coffees, our commitment is to provide exceptional taste with trustworthy ingredients that supports your well-being every day.",
+        "button_text": "Shop Now",
+        "button_url": "/collections/all",
+        "background_color": "#f8f9fa",
+        "accent_color": "#ff6b35",
+        "text_color": "#2c2c2c",
+        "button_color": "#ff6b35",
+        "button_text_color": "#ffffff"
       }
     }
   },
@@ -150,6 +186,7 @@
     "image_banner_FXAhPq",
     "image_with_text_BJBze6",
     "daily_habits_matter_TxBPyQ",
-    "pre_footer_Yrjwkx"
+    "pre_footer_Yrjwkx",
+    "quality_commitment_VkBwQQ"
   ]
 }
