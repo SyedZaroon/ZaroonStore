@@ -31,40 +31,37 @@
         "button_link": "",
         "product_image": "shopify://shop_images/image_26_3cd72175-e728-4655-9296-ddd9833e50ca.png",
         "glass_image": "shopify://shop_images/glass.png",
-        "background_color": "#FDF7F0",
-        "accent_color": "#FF6B35"
+        "background_color": "#fdf7f0",
+        "accent_color": "#ff6b35"
       }
     },
     "image_with_text_BJBze6": {
       "type": "image-with-text",
       "blocks": {
+        "caption_iFcKnM": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our Journey"
+          }
+        },
         "heading_QzwDza": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "heading": "Crafting Unique Blends"
           }
         },
         "text_hreJ8D": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>At The Powerhouse, we understand that small changes lead to big results. Our mission is to provide delicious, innovative drinks that support your daily routine. Each product is thoughtfully developed, blending quality ingredients for a satisfying experience.</p>",
             "text_style": "body"
-          }
-        },
-        "button_jCtXPN": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
           }
         }
       },
       "block_order": [
+        "caption_iFcKnM",
         "heading_QzwDza",
-        "text_hreJ8D",
-        "button_jCtXPN"
+        "text_hreJ8D"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -82,11 +79,77 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "daily_habits_matter_TxBPyQ": {
+      "type": "daily-habits-matter",
+      "blocks": {
+        "habit_card_rT9gzg": {
+          "type": "habit_card",
+          "settings": {
+            "title": "Innovative Approach",
+            "description": "We craft beverages with natural ingredients, offering exceptional taste and health benefits."
+          }
+        },
+        "habit_card_498hDV": {
+          "type": "habit_card",
+          "settings": {
+            "title": "Customer Commitment",
+            "description": "Your satisfaction is our priority, with dedicated service and exceptional product quality."
+          }
+        },
+        "habit_card_CAjqMc": {
+          "type": "habit_card",
+          "settings": {
+            "title": "Health-Centric",
+            "description": "We focus on delivering nourishing options that support your well-being and daily lifestyle."
+          }
+        },
+        "habit_card_VPHVNK": {
+          "type": "habit_card",
+          "settings": {
+            "title": "Quality Ingredients",
+            "description": "We prioritize sourcing high-quality ingredients to ensure every sip is pure satisfaction."
+          }
+        }
+      },
+      "block_order": [
+        "habit_card_rT9gzg",
+        "habit_card_498hDV",
+        "habit_card_CAjqMc",
+        "habit_card_VPHVNK"
+      ],
+      "name": "Daily Habits Matter",
+      "settings": {
+        "tag_text": "Our Secret Weapon?",
+        "title": "Adaptogen-Infused Beverages",
+        "subtitle": "Our secret weapon? Adaptogens – nature's stress-fighting heroes. Each blend is thoughtfully crafted to support your well-being, using nature's best ingredients. Experience the balance and nourishment our adaptogens bring, enhancing your daily routine with each sip.",
+        "background_color": "#fdf7f0",
+        "accent_color": "#FF6B35",
+        "text_color": "#2C2C2C"
+      }
+    },
+    "pre_footer_Yrjwkx": {
+      "type": "pre-footer",
+      "name": "Pre Footer",
+      "settings": {
+        "title": "Discover the Perfect Blend of Health and Taste with Us",
+        "description": "",
+        "button_label": "Go to Shop",
+        "button_link": "",
+        "product_image": "shopify://shop_images/image_26.png",
+        "background_color": "#fdf7f0",
+        "content_background_color": "#FF6B35",
+        "text_color": "#FFFFFF",
+        "button_background": "#FFFFFF",
+        "button_text_color": "#FF6B35"
+      }
     }
   },
   "order": [
     "main",
     "image_banner_FXAhPq",
-    "image_with_text_BJBze6"
+    "image_with_text_BJBze6",
+    "daily_habits_matter_TxBPyQ",
+    "pre_footer_Yrjwkx"
   ]
 }
