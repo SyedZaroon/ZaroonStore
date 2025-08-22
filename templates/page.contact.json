@@ -12,23 +12,60 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "custom_tag": "",
+        "custom_title": "",
+        "custom_desc": "",
+        "padding_top": 200,
+        "padding_bottom": 100,
+        "bg_color": "#fdf7f0",
+        "top_left_img": "shopify://shop_images/glass.png",
+        "bottom_right_img": "shopify://shop_images/cup.png"
       }
     },
-    "form": {
-      "type": "contact-form",
+    "contact_page_gMwWth": {
+      "type": "contact-page",
+      "blocks": {
+        "icon_box_UDUyDV": {
+          "type": "icon_box",
+          "settings": {
+            "img": "shopify://shop_images/marker_7_1.png",
+            "icon-box-text": "Head Office Address",
+            "icon-box-desc": "Lumbung Hidup St. 42 East Java Madiun City"
+          }
+        },
+        "icon_box_mW7Q48": {
+          "type": "icon_box",
+          "settings": {
+            "img": "shopify://shop_images/envelope_6_1.png",
+            "icon-box-text": "Our Contact",
+            "icon-box-desc": "info@powerhouse.com"
+          }
+        },
+        "icon_box_iaxULb": {
+          "type": "icon_box",
+          "settings": {
+            "img": "shopify://shop_images/phone-call_3_1.png",
+            "icon-box-text": "Our Telephone",
+            "icon-box-desc": "(064) 332-1233"
+          }
+        }
+      },
+      "block_order": [
+        "icon_box_UDUyDV",
+        "icon_box_mW7Q48",
+        "icon_box_iaxULb"
+      ],
+      "name": "Contact Page",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "tagline": "Keep Connected",
+        "heading": "Lets Get In Touch With Our Team",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "bg_color": "#fdf7f0"
       }
     }
   },
   "order": [
     "main",
-    "form"
+    "contact_page_gMwWth"
   ]
 }

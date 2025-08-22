@@ -1,0 +1,99 @@
+{% style %}
+  .form-container{
+    background-color:white;
+    border-radius:6px;
+    padding:40px;
+  }
+
+  .form-fields{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .form-field input,
+  .form-field textarea{
+    padding:16px 0px 16px 20px;
+    width:100%;
+    border: 1px solid #24242440;
+    border-radius:6px;
+  }
+
+  .form-submit-btn {
+    width: 40%;
+    text-align: center;
+    border: 0px;
+    justify-content: center;
+}
+{% endstyle %}
+
+<div class="form-container">
+
+{% form 'contact', id: 'custom-contact-form' %}
+
+  {%- if form.posted_successfully? -%}
+    <p class="form-success">Thank you! Your message has been sent.</p>
+  {%- endif -%}
+
+  {%- if form.errors -%}
+    <div class="form-errors">
+      <ul>
+        {%- for field in form.errors -%}
+          <li>{{ form.errors.translated_fields[field] | capitalize }} – {{ form.errors.messages[field] }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  <!-- Name -->
+  <div class="form-fields">
+  <div class="form-field">
+    <input
+        placeholder="Full Name*"
+      type="text"
+      id="ContactFormName"
+      name="contact[{{ 'Name' | t }}]"
+      value="{{ form.name }}"
+      required
+    >
+  </div>
+
+  <!-- Email -->
+  <div class="form-field">
+    <input
+        placeholder="Email Address*"
+      type="email"
+      id="ContactFormEmail"
+      name="contact[email]"
+      value="{{ form.email }}"
+      required
+    >
+  </div>
+
+  <!-- Phone -->
+  <div class="form-field">
+    <input
+        placeholder="Mobile Number*"
+      type="tel"
+      id="ContactFormPhone"
+      name="contact[phone]"
+      value="{{ form.phone }}"
+    >
+  </div>
+
+  <!-- Message -->
+  <div class="form-field">
+    <textarea
+        placeholder="Message"
+      id="ContactFormMessage"
+      name="contact[body]"
+      rows="7"
+    >{{ form.body }}</textarea>
+  </div>
+
+  <button type="submit" class="primary-btn form-submit-btn">Send Message</button>
+  </div>
+
+{% endform %}
+
+</div>
