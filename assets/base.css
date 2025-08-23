@@ -3732,7 +3732,8 @@ footer {
     display: none;
 }
 
-button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+button.shopify-payment-button__button.shopify-payment-button__button--unbranded,
+button#checkout {
     background-color: #FB740F;
     color: white;
 }
