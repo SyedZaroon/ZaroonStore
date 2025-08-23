@@ -3721,6 +3721,7 @@ footer {
 
 .product__info-container span.price-item.price-item--regular.custom-price {
     color: #FB740F;
+            font-size: calc(var(--font-heading-scale) * 4rem);
 }
 
 .product-form__submit {
