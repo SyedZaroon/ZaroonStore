@@ -233,6 +233,12 @@ product-info {
 
 .product__text {
   margin-bottom: 0;
+      background-color: #FB740F;
+    width: fit-content;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
 }
 
 a.product__text {
