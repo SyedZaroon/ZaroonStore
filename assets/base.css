@@ -3718,3 +3718,7 @@ footer {
 .footer-block.grid__item:first-child{
   width: 265px;
 }
+
+span.price-item.price-item--regular.h1 {
+    color: #FB740F;
+}
