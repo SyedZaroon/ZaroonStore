@@ -3738,3 +3738,7 @@ button#checkout,
     background-color: #FB740F;
     color: white;
 }
+
+cart-items.gradient.color-scheme-5.isolate.is-empty{
+  padding-top:200px;
+}
