@@ -604,6 +604,10 @@ details>* {
   --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
 }
 
+.underlined-link{
+  color:#FB740F;
+}
+
 .underlined-link,
 .customer a,
 .inline-richtext a {
