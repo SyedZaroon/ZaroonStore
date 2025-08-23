@@ -3734,7 +3734,7 @@ footer {
 
 button.shopify-payment-button__button.shopify-payment-button__button--unbranded,
 button#checkout,
-.cart__warnings.button {
+.cart__warnings a.button {
     background-color: #FB740F;
     color: white;
 }
