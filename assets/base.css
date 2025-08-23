@@ -3722,3 +3722,12 @@ footer {
 span.price-item.price-item--regular.h1 {
     color: #FB740F;
 }
+
+.product-form__submit {
+    display: none;
+}
+
+button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+    background-color: #FB740F;
+    color: white;
+}
