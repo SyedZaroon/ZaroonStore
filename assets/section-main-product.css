@@ -257,10 +257,6 @@ a.product__text {
 
 }
 
-.product__title h1{
-  color:black;
-}
-
 .product__title > * {
   margin: 0;
 }
