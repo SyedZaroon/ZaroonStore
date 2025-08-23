@@ -145,7 +145,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#000000",
           "background_gradient": "",
           "heading_color": "#fb740f",
           "text": "#121212",
