@@ -1,0 +1,4 @@
+admin-api/node_modules/
+admin-api/.env*
+config.bat
+node_modules
