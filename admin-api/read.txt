@@ -1,0 +1,23 @@
+1. fisrt set uo node project - npm init -y
+
+2. install express - npm install express
+
+3. install dotenv - npm install dotenv
+why we need dotenv? - to store sensitive information like api key, secret key, etc.
+
+4. install axios - npm install axios
+why we need axios? - to make http requests to shopify api
+
+5. install cors - npm install cors
+why we need cors? - to allow cross origin requests
+what is cross origin request? - when we make a request from one domain to another domain
+
+6. install morgan - npm install morgan
+why we need morgan? - to log http requests
+explain morgan? - morgan is a logging middleware for express.js
+
+
+7. install nodemon - npm install nodemon
+why we need nodemon? - to automatically restart the server when code changes
+
+
